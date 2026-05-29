@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>관리자 패널</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>기자 계정 생성</h1>
+
+    <form method="POST" action="/admin/create-reporter">
+        <input type="text" name="username" placeholder="기자 아이디" required>
+        <input type="password" name="password" placeholder="기자 비밀번호" required>
+        <button type="submit">생성</button>
+    </form>
+</body>
+</html>

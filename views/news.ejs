@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= article.title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+    <a class="back" href="/">← 메인으로</a>
+
+    <div class="article">
+        <h1><%= article.title %></h1>
+
+        <div class="meta">
+            기자 · <%= article.author %>
+        </div>
+
+        <% if(user && (user.role === "reporter" || user.role === "admin")) { %>
+            <div class="article-actions">
+                <a class="edit-btn" href="/edit/<%= article.id %>">수정</a>
+
+                <form method="POST" action="/delete/<%= article.id %>">
+                    <button class="delete-btn" type="submit">삭제</button>
+                </form>
+            </div>
+        <% } %>
+
+        <br><hr><br>
+
+        <p><%= article.content %></p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>로그인</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="section-title">로그인</h1>
+
+    <form method="POST">
+        <% if(error){ %>
+            <div class="error-box">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <input type="text" name="username" placeholder="아이디" required>
+        <input type="password" name="password" placeholder="비밀번호" required>
+        <button type="submit">로그인</button>
+    </form>
+</div>
+
+</body>
+</html>

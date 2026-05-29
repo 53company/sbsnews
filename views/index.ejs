@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SBS 뉴스</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="topbar">
+    <div class="logo">SBS <span>NEWS</span></div>
+
+    <div class="nav-links">
+        <% if(user){ %>
+            <span><%= user.username %> · <%= user.role %></span>
+
+            <% if(user.role === "reporter" || user.role === "admin"){ %>
+                <a href="/write">기사 작성</a>
+            <% } %>
+
+            <% if(user.role === "admin"){ %>
+                <a href="/admin">관리자</a>
+            <% } %>
+
+            <a href="/logout">로그아웃</a>
+
+        <% } else { %>
+            <a href="/login">로그인</a>
+        <% } %>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="hero">
+        <h1>Space Class Broadcasting System</h1>
+        <p>실시간 뉴스와 최신 속보를 빠르게 전달합니다.</p>
+    </div>
+
+    <h2 class="section-title">최신 뉴스</h2>
+
+    <div class="news-grid">
+        <% news.forEach(article => { %>
+            <div class="card">
+                <div class="card-content">
+                    <h2>
+                        <a href="/news/<%= article.id %>">
+                            <%= article.title %>
+                        </a>
+                    </h2>
+
+                    <p class="preview">
+                        <%= article.content.substring(0, 120) %>...
+                    </p>
+
+                    <div class="meta">
+                        기자 · <%= article.author %>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+</body>
+</html>
